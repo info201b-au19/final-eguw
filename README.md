@@ -17,7 +17,7 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
   - can be answered by calculating the average cost of livings per person  
 - Crime and Homelessness
   - compare the crime rate with homeless population in the saome region  
-- 
+-
 
 ## Finding data
 
@@ -25,7 +25,7 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
 |---|---|---|---|---|
 |https://www.kaggle.com/adamschroeder/homelessness/data# | Combines Point-in-Time homeless count estimates with data from the Department of Housing and Urband Development. | 86,530 | 6 | What homeless populations most often secure shelter, and how does it vary between states?|
 |https://www.kaggle.com/andytran11996/cost-of-living#cost-of-living-2018.csv | Unknown | 540 | 8 | Is there a positive relation between Consumer Price Index(CPI) and homeless population? |
-|Source 3 | *replace text* | *replace text* | *replace text* | *replace text* |
+|https://ucr.fbi.gov/crime-in-the-u.s/2018/crime-in-the-u.s.-2018/topic-pages/tables/table-6| *replace text* | *replace text* | *replace text* | *replace text* |
 
 - For each identified data source,
   - Link to URL where data is from, and download the data into the project repo in a data/ folder (1 point)?
