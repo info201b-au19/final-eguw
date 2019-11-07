@@ -5,10 +5,9 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
 - Why are you interested in this field/domain? Describes in at least 2 - 3 sentences why the group is interested in this area. May be personal, or related to pertinence of the domain. (1 point)
 
 - Examples of other data driven projects related to this domain (6 points, 2 points each)?
-  - [UW Urban Analytics - Housing Stability and Homelessness](https://urbanalytics.uw.edu/projects/housingstability/)
-  - [Seattle/King County Point-In-Time Count of Persons Experiencing Homelessness](http://allhomekc.org/wp-content/uploads/2019/05/2019-Report_KingCounty_FINAL.pdf)
-  - [How much do Seattle and King County spend on homelessness?](https://www.seattletimes.com/seattle-news/homeless/how-much-do-seattle-and-king-county-spend-on-homelessness/)
-  - [Understanding Homelessness](http://www.understandhomelessness.com)
+  - [UW Urban Analytics - Housing Stability and Homelessness](https://urbanalytics.uw.edu/projects/housingstability/) Research seeking to decipher factors and services contributing to the housing stability of the homeless.
+  - [Seattle/King County Point-In-Time Count of Persons Experiencing Homelessness](http://allhomekc.org/wp-content/uploads/2019/05/2019-Report_KingCounty_FINAL.pdf) An annual report from *All Home* intending to capture statistics on homelessness on a given night.
+  - [How much do Seattle and King County spend on homelessness?](https://www.seattletimes.com/seattle-news/homeless/how-much-do-seattle-and-king-county-spend-on-homelessness/) Seattle Times infographic illustrating how much is spent on homelessness, including it's sources and how it is spent.
 
   - Provides link to a data driven projects (1 point)
   - Briefly describes the project in 1 - 2 sentences (1 points)
