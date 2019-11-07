@@ -18,7 +18,7 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
 | Source | Collection Methodology | Observations | Features | Questions |
 |---|---|---|---|---|
 |https://www.kaggle.com/adamschroeder/homelessness/data# | Combines Point-in-Time homeless count estimates with data from the Department of Housing and Urband Development. | 86,530 | 6 | What homeless populations most often secure shelter, and how does it vary between states?|
-|Source 2 | *replace text* | *replace text* | *replace text* | *replace text* |
+|https://www.kaggle.com/andytran11996/cost-of-living#cost-of-living-2018.csv | Unknown | 540 | 8 | Is there a positive relation between Consumer Price Index(CPI) and homeless population? |
 |Source 3 | *replace text* | *replace text* | *replace text* | *replace text* |
 
 - For each identified data source,
