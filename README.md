@@ -13,6 +13,12 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
   - Question is related to the field (1 point)
   - Describes how the question can be answered using data (e.g., a specific comparison within or analysis of the data that answers the question) (1 point)
 
+- Cost of homelessness
+  - can be answered by calculating the average cost of livings per person  
+- Crime and Homelessness
+  - compare the crime rate with homeless population in the saome region  
+- 
+
 ## Finding data
 
 | Source | Collection Methodology | Observations | Features | Questions |
