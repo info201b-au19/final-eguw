@@ -9,16 +9,12 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
   - [How much do Seattle and King County spend on homelessness?](https://www.seattletimes.com/seattle-news/homeless/how-much-do-seattle-and-king-county-spend-on-homelessness/) Seattle Times infographic illustrating how much is spent on homelessness, including it's sources and how it is spent.
   ![How much do Seattle and King County spend on homelessness?](https://static.seattletimes.com/wp-content/uploads/2017/10/homeless-budget-WEB.jpg-1560x1195.jpeg "How much do Seattle and King County spend on homelessness?")
 
-- What data-driven questions do you hope to answer about this domain (6 points, 2 points each)
-  - Question is related to the field (1 point)
-  - Describes how the question can be answered using data (e.g., a specific comparison within or analysis of the data that answers the question) (1 point)
-
 - Cost of homelessness
   - can be answered by calculating the average cost of livings per person  
 - Crime and Homelessness
   - compare the crime rate with homeless population in the saome region  
 - Homeless and drug correalation
-  - use data to find out how many homeless people are addicted to drugs
+  - use data to find out how many homeless people are also addicted to drugs
 
 ## Finding data
 
