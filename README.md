@@ -12,7 +12,7 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
 - Cost of homelessness
   - can be answered by calculating the average cost of livings per person  
 - Crime and Homelessness
-  - compare the crime rate with homeless population in the saome region  
+  - compare the crime rate with homeless population in the same region  
 - Homeless and drug correalation
   - use data to find out how many homeless people are also addicted to drugs
 
@@ -22,4 +22,4 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
 |---|---|---|---|---|
 |https://www.kaggle.com/adamschroeder/homelessness/data# | Combines Point-in-Time homeless count estimates with data from the Department of Housing and Urband Development. | 86,530 | 6 | What homeless populations most often secure shelter, and how does it vary between states?|
 |https://www.kaggle.com/andytran11996/cost-of-living#cost-of-living-2018.csv | Unknown | 540 | 8 | Is there a positive relation between Consumer Price Index(CPI) and homeless population? |
-|https://ucr.fbi.gov/crime-in-the-u.s/2018/crime-in-the-u.s.-2018/topic-pages/tables/table-6| *replace text* | *replace text* | *replace text* | *replace text* |
+|https://www.kaggle.com/mikejohnsonjr/united-states-crime-rates-by-county| Takes information from the US census and national crime data from the counties in the US | 3136 | 24 | Is there a correlation between crimerates and homelessness in certain regions? |
