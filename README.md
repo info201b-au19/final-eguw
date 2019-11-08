@@ -17,7 +17,8 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
   - can be answered by calculating the average cost of livings per person  
 - Crime and Homelessness
   - compare the crime rate with homeless population in the saome region  
--
+- Homeless and drug correalation
+  - use data to find out how many homeless people are addicted to drugs
 
 ## Finding data
 
@@ -26,11 +27,3 @@ Our domain of interest is **Homelessness situation in Seattle**. In the Seattle 
 |https://www.kaggle.com/adamschroeder/homelessness/data# | Combines Point-in-Time homeless count estimates with data from the Department of Housing and Urband Development. | 86,530 | 6 | What homeless populations most often secure shelter, and how does it vary between states?|
 |https://www.kaggle.com/andytran11996/cost-of-living#cost-of-living-2018.csv | Unknown | 540 | 8 | Is there a positive relation between Consumer Price Index(CPI) and homeless population? |
 |https://ucr.fbi.gov/crime-in-the-u.s/2018/crime-in-the-u.s.-2018/topic-pages/tables/table-6| *replace text* | *replace text* | *replace text* | *replace text* |
-
-- For each identified data source,
-  - Link to URL where data is from, and download the data into the project repo in a data/ folder (1 point)?
-  - Description of how was the data collected or generated (1 point)?
-  - How many observations (rows) and features (columns) are in your data(1 point)?
-  - What questions (from above) can be answered using the data in this dataset(1 point)?
-
-github link: https://github.com/info201b-au19/final-eguw.git
