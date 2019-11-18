@@ -33,5 +33,14 @@ shelterAnalysis <- function(states, state_populations, homelessness) {
   summary <- left_join(homelessness2016, state_stats) %>% 
     filter(state != "GU", state != "VI")
   
-  return(summary)
+  basemap <- leaflet(data = summary, width = "100%", height = "400px") %>%
+    addTiles() %>%
+    setView(lng = -95.7129, lat = 37.0902, zoom = 2) %>% 
+    addMinicharts(
+      summary$longitude, summary$latitude,
+      type = "pie",
+      chartdata = select(summary, totalHomeless, population)
+    )
+  
+  return(basemap)
 }

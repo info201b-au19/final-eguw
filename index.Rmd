@@ -26,8 +26,6 @@ states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
 state_populations <- read.csv("data/homelessness/Population-by-state.csv", stringsAsFactors = FALSE)
 homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
 
-shelter_summary <- shelterAnalysis(states, state_populations, homelessness)
-
 cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
                     stringsAsFactors = FALSE)
 ```
@@ -43,8 +41,7 @@ The average number of homeless people between 2007 - 2016 was `r summary$avg_uns
 Number of homeless veterans in 2016 was `r summary$homeless_vets`.
 Which state had the least homeless people in 2016? `r summary$latest_state_most_hl`.
 year with most homeless people `r summary$year_most_homeless`
-Total homeless people in 2016 `r sum(shelter_summary$totalHomeless)`
-National average of percent of homeless people with shelter `r mean(shelter_summary$sheltered)`
+
 
 ## Table 
 
@@ -55,16 +52,8 @@ get_sum_table(cpi_2016, homelessness, state_populations)
 This summary table provides aggregate information of 10 states with the highest percentages of Homeless population. It also comes with the average CPI(Cosumer Price Index), total populaion of each state. We include this table to show you which states are most impacted by Homeless problem.
 
 ## Shelter Analysis
-```{r homelessness, include=FALSE}
-
-leaflet(data = shelter_summary, width = "100%", height = "400px") %>%
-  addTiles() %>%
-  setView(lng = -95.7129, lat = 37.0902, zoom = 2) %>% 
-  addMinicharts(
-    shelter_summary$longitude, shelter_summary$latitude,
-    type = "pie"
-  )
-
+```{r homelessness, message=FALSE, echo=FALSE, warning=FALSE}
+shelterAnalysis(states, state_populations, homelessness)
 ```
 
 ## Chart 2 Observations 
