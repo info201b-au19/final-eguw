@@ -74,7 +74,7 @@ This is a preview. As you can see in the scatter plot, there is a potential corr
 bar_chart
 ```
 
-This bar chart includes 10 representative cities ranging from cities with below average CPIs to those with the higest CPIs. As you can tell, as the CPI goes up, the Homelessness rates goes up. We have calculated the number of Homeless people in 1 Million people to eliminate the influence by city population(larger cities tend to have higher CPIs and higher population, which means more homeless people). Note that Atlanta and Seattle are two outlier in this comparison, with unusual high population of Homeless. However, this can't deny that Homeless rate is correlated with CPI.
+This bar chart includes 10 representative cities ranging from cities with below average CPIs to those with the higest CPIs. As you can tell, as the CPI goes up, the Homelessness rates goes up. We have calculated the number of Homeless people in 1 Million people to eliminate the influence by city population(larger cities tend to have higher CPIs and higher population, which means more homeless people). Note that Atlanta and Seattle are two outlier in this comparison, with unusual high population of Homeless. However, this can't deny that Homeless rate is correlated with CPI. We should be cocerned that Seattle's high homeless population has something to do with other factors such as lack of governance and bad drug control, etc. 
 
 ## Chart 3 Observations 
 
