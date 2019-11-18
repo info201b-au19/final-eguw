@@ -39,7 +39,8 @@ shelterAnalysis <- function(states, state_populations, homelessness) {
     addMinicharts(
       summary$longitude, summary$latitude,
       type = "pie",
-      chartdata = select(summary, totalHomeless, population)
+      chartdata = select(summary, shelteredHomeless, unshelteredHomeless),
+      width = 20 / summary$sheltered
     )
   
   return(basemap)
