@@ -1,0 +1,22 @@
+---
+title: "Index"
+author: "Gabby, Vincent, and Eric"
+date: "11/17/2019"
+output: html_document
+---
+
+## Introductory paragraph:
+
+
+## Summary Paragraph
+
+## Table 
+
+Table observations 
+
+## Chart 1 Observations 
+
+## Chart 2 Observations 
+
+## Chart 3 Observations 
+
