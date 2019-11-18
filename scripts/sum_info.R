@@ -1,9 +1,5 @@
 # Summary file for summary info 
 
-# download datasets in file
-
-homelessness <- read.csv("../data/homelessness/2007-2016-Homelessnewss-USA.csv",
-                         stringsAsFactors = FALSE)
 
 # function takes in a dataset and returns a list of info about it 
 get_summary_info <- function(dataset){
