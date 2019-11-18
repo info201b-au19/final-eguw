@@ -2,12 +2,6 @@
 # Homelessness vs crime rate
 library(dplyr)
 library(plotly)
-# download chart
-crime <- read.csv("../data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
-                  stringsAsFactors = FALSE)
-homelessness <- read.csv("../data/homelessness/2007-2016-Homelessnewss-USA.csv",
-                         stringsAsFactors = FALSE)
-
 
 # Function to make the chart data_one = homelessness // data_two = crime
 get_scatterplot <- function(data_one, data_two){
