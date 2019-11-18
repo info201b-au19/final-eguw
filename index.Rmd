@@ -10,6 +10,10 @@ library(dplyr)
 library(tidyr)
 library(leaflet)
 library(leaflet.minicharts)
+library(knitr)
+library(ggplot2)
+library(ggpubr)
+library(stringr)
 
 source("scripts/shelter.R")
 source("scripts/cost_of_living.R")
@@ -20,7 +24,8 @@ states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
 state_populations <- read.csv("data/homelessness/Population-by-state.csv", stringsAsFactors = FALSE)
 homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
 
-shelter_summary <- shelterAnalysis(states, state_populations, homelessness)
+cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
+                    stringsAsFactors = FALSE)
 ```
 
 ## Introductory paragraph:
@@ -28,37 +33,36 @@ Our domain of interest is Homelessness. In the Seattle King County area, there a
 
 ## Summary Paragraph
 ```{r summary, include=FALSE}
-homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
 summary <- get_summary_info(homelessness)
 ```
 The average number of homeless people between 2007 - 2016 was `r summary$avg_unshel_hl`.
 Number of homeless veterans in 2016 was `r summary$homeless_vets`.
 Which state had the least homeless people in 2016? `r summary$latest_state_most_hl`.
 year with most homeless people `r summary$year_most_homeless`
-Total homeless people in 2016 `r sum(shelter_summary$totalHomeless)`
-National average of percent of homeless people with shelter `r mean(shelter_summary$sheltered)`
+
 
 ## Table 
 
-Table observations 
+```{r table, message=FALSE, echo=FALSE, warning=FALSE}
+get_sum_table(cpi_2016, homelessness, state_populations)
+```
+
+This summary table provides aggregate information of 10 states with the highest percentages of Homeless population. It also comes with the average CPI(Cosumer Price Index), total populaion of each state. We include this table to show you which states are most impacted by Homeless problem.
 
 ## Shelter Analysis
-```{r homelessness, include=FALSE}
-
-#map <- leaflet(data = summary, width = "100%", height = "400px") %>%
-#  addTiles() %>%
-#  setView(lng = -95.7129, lat = 37.0902, zoom = 2) %>% 
-#  addMinicharts(
-#    summary$longitude, summary$latitude,
-#    type = "pie",
-#    chartdata = select(summary, shelteredHomeless, unshelteredHomeless),
-#    width = 20 / summary$sheltered
-#  )
-
-# map
+The visualization below illustrates the proportion of Sheltered Homeless to Unsheltered Homeless individuals, in each State in 2016. To make it even more apparent, when there's a high proportion of Unsheltered Homeless the pie chart gets larger.
+```{r homelessness, message=FALSE, echo=FALSE, warning=FALSE}
+shelterAnalysis(states, state_populations, homelessness)
 ```
 
 ## Chart 2 Observations 
+The following is a preview. As you can see in the scatter plot, there is a potential correaltion between CPI and Homeless rate. However, it is not quite obvious. To visualize the potential correlation between higher cost of living and Homeless rate, we have included another chart for better comparison.  
+
+```{r charts, fig.width=12, fig.height=5, message=FALSE, echo=FALSE, warning=FALSE}
+get_charts(cpi_2016, homelessness)
+```
+  
+This bar chart includes 10 representative cities ranging from cities with below average CPIs to those with the higest CPIs. As you can tell, as the CPI goes up, the Homelessness rates goes up. We have calculated the number of Homeless people in 1 Million people to eliminate the influence by city population(larger cities tend to have higher CPIs and higher population, which means more homeless people). Note that Atlanta and Seattle are two outlier in this comparison, with unusual high population of Homeless. However, this can't deny that Homeless rate is correlated with CPI. We should be cocerned that Seattle's high homeless population has something to do with other factors such as lack of governance and bad drug control, etc. 
 
 ## Chart 3 Observations 
 
