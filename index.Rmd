@@ -13,9 +13,14 @@ library(leaflet.minicharts)
 
 source("scripts/shelter.R")
 source("scripts/cost_of_living.R")
-source("scripts/crime_rate.R")
 source("scripts/sum_info.R")
 source("scripts/sum_table.R")
+
+states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
+state_populations <- read.csv("data/homelessness/Population-by-state.csv", stringsAsFactors = FALSE)
+homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
+
+shelter_summary <- shelterAnalysis(states, state_populations, homelessness)
 ```
 
 ## Introductory paragraph:
@@ -30,6 +35,8 @@ The average number of homeless people between 2007 - 2016 was `r summary$avg_uns
 Number of homeless veterans in 2016 was `r summary$homeless_vets`.
 Which state had the least homeless people in 2016? `r summary$latest_state_most_hl`.
 year with most homeless people `r summary$year_most_homeless`
+Total homeless people in 2016 `r sum(shelter_summary$totalHomeless)`
+National average of percent of homeless people with shelter `r mean(shelter_summary$sheltered)`
 
 ## Table 
 
@@ -38,23 +45,17 @@ Table observations
 ## Shelter Analysis
 ```{r homelessness, include=FALSE}
 
-states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
-state_populations <- read.csv("data/homelessness/Population-by-state.csv", stringsAsFactors = FALSE)
-homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
+#map <- leaflet(data = summary, width = "100%", height = "400px") %>%
+#  addTiles() %>%
+#  setView(lng = -95.7129, lat = 37.0902, zoom = 2) %>% 
+#  addMinicharts(
+#    summary$longitude, summary$latitude,
+#    type = "pie",
+#    chartdata = select(summary, shelteredHomeless, unshelteredHomeless),
+#    width = 20 / summary$sheltered
+#  )
 
-summary <- shelterAnalysis(states, state_populations, homelessness)
-
-map <- leaflet(data = summary, width = "100%", height = "400px") %>%
-  addTiles() %>%
-  setView(lng = -95.7129, lat = 37.0902, zoom = 2) %>% 
-  addMinicharts(
-    summary$longitude, summary$latitude,
-    type = "pie",
-    chartdata = select(summary, shelteredHomeless, unshelteredHomeless),
-    width = 20 / summary$sheltered
-  )
-
-map
+# map
 ```
 
 ## Chart 2 Observations 
