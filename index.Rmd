@@ -1,5 +1,5 @@
 ---
-title: "Index"
+title: "Homelessness Midpoint Deliverable"
 author: "Gabby, Vincent, and Eric"
 date: "11/17/2019"
 output: html_document
@@ -28,10 +28,10 @@ cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
                     stringsAsFactors = FALSE)
 ```
 
-## Introductory paragraph:
+## Topic
 Our domain of interest is Homelessness. In the Seattle King County area, there are about 12,500 homeless people living on the streets or in shelters. This not only makes the living environment of Seattle worse but also impacts the citizens’ daily life(crime, policing, junk/RVs, harassment etc). Confronted with this in our daily lives, we are interested in better understanding the issue locally and nationally including some of the factors contributing to it.
 
-## Summary Paragraph
+## Summary
 ```{r summary, include=FALSE}
 summary <- get_summary_info(homelessness)
 ```
@@ -50,12 +50,14 @@ get_sum_table(cpi_2016, homelessness, state_populations)
 This summary table provides aggregate information of 10 states with the highest percentages of Homeless population. It also comes with the average CPI(Cosumer Price Index), total populaion of each state. We include this table to show you which states are most impacted by Homeless problem.
 
 ## Shelter Analysis
-The visualization below illustrates the proportion of Sheltered Homeless to Unsheltered Homeless individuals, in each State in 2016. To make it even more apparent, when there's a high proportion of Unsheltered Homeless the pie chart gets larger.
+The visualization below illustrates the proportion of Sheltered Homeless to Unsheltered Homeless individuals, in each State in 2016. To make variance even more apparent, the pie charts gets larger when there is a high proportion of Unsheltered Homeless.
+
+You can see that states with more moderate climates, such as California and Florida have greater portions of unsheltered homeless.
 ```{r homelessness, message=FALSE, echo=FALSE, warning=FALSE}
 shelterAnalysis(states, state_populations, homelessness)
 ```
 
-## Chart 2 Observations 
+## CPI Analysis
 The following is a preview. As you can see in the scatter plot, there is a potential correaltion between CPI and Homeless rate. However, it is not quite obvious. To visualize the potential correlation between higher cost of living and Homeless rate, we have included another chart for better comparison.  
 
 ```{r charts, fig.width=12, fig.height=5, message=FALSE, echo=FALSE, warning=FALSE}
