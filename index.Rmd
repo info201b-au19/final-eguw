@@ -50,6 +50,7 @@ get_sum_table(cpi_2016, homelessness, state_populations)
 This summary table provides aggregate information of 10 states with the highest percentages of Homeless population. It also comes with the average CPI(Cosumer Price Index), total populaion of each state. We include this table to show you which states are most impacted by Homeless problem.
 
 ## Shelter Analysis
+The visualization below illustrates the proportion of Sheltered Homeless to Unsheltered Homeless individuals, in each State in 2016. To make it even more apparent, when there's a high proportion of Unsheltered Homeless the pie chart gets larger.
 ```{r homelessness, message=FALSE, echo=FALSE, warning=FALSE}
 shelterAnalysis(states, state_populations, homelessness)
 ```
