@@ -4,7 +4,6 @@
 library(dplyr)
 library(stringr)
 library(tidyr)
-library(tidyverse)
 library(ggplot2)
 
 df_temp <- read.csv("../data/cost-of-living/cost-of-living-2016.csv",
@@ -61,7 +60,8 @@ df_combined <- rbind(a, b, by = "City") %>%
   mutate(Count = gsub(",", "", Count)) %>%
   mutate(Count = as.numeric(Count)) %>%
   mutate(CPI = as.numeric(CPI)) %>%
-  mutate(CPI2 = CPI * 50)
+  mutate(CPI2 = CPI*50)
+
 
 # Just a preview, since im doing bar chart rather than scatter plot
 scatter_plot <- ggplot() +
@@ -75,26 +75,28 @@ representative <- df_combined %>%
     City == "Atlanta" | City == "Detroit" | City == "Tucson" |
     City == "Springfield" | City == "San Jose" |
     City == "San Francisco" | City == "San Antonio") %>%
-  arrange(CPI2)
+    arrange(CPI) %>%
+    mutate(total_pop_millions = as.numeric(c("0.17", "0.54", "1.5", "0.67",
+                                             "0.49", "1.58", "1.42", "0.74",
+                                             "1.04", "0.88"))) %>%
+    mutate(rate = Count/total_pop_millions)
 
 # To put cities in ascending order of cpi
 representative$City <- factor(representative$City, representative$City[1:10])
 # LA is an outlier
 
-long_rep <- gather(representative, event, total, CPI2:Count)
+long_rep <- gather(representative, event, total, CPI2, rate)
 
 # Bar chart to be called
 bar_chart <- ggplot(long_rep, aes(x = City)) +
   geom_bar(aes(y = total, color = event, fill = event),
     stat = "identity", position = position_dodge(width = 0.8),
-    width = 0.8, color = "white"
-  ) +
-  scale_y_continuous(sec.axis = sec_axis(~ . / 50,
-                                         name = "CPI (Rent included)")) +
+    width = 0.8, color = "white") +
+  scale_y_continuous(sec.axis = sec_axis(~./50, name = "CPI (Rent included)")) +
   scale_fill_manual(
-    values = c("indianred2", "aquamarine4"),
-    labels = c("Homeless", "CPI")
+    values = c("aquamarine4", "indianred2"),
+    labels = c("CPI", "Homeless")
   ) +
-  labs(y = "Homeless Population", x = NULL, fill = NULL) +
-  ggtitle("2016 CPI / Homeless Population (in 10 representative cities)") +
-  theme(axis.text.x = element_text(angle = 40))
+  labs(y = "# of Homeless (in 1 Million)", x = NULL, fill = NULL) +
+  ggtitle("2016 CPI / Homeless Rate (in 10 representative cities)") +
+  theme(axis.text.x = element_text(angle = 35))

@@ -10,6 +10,7 @@ library(dplyr)
 library(tidyr)
 library(leaflet)
 library(leaflet.minicharts)
+library(knitr)
 
 source("scripts/shelter.R")
 source("scripts/cost_of_living.R")
@@ -39,8 +40,14 @@ Total homeless people in 2016 `r sum(shelter_summary$totalHomeless)`
 National average of percent of homeless people with shelter `r mean(shelter_summary$sheltered)`
 
 ## Table 
+```{r table, include=FALSE}
+kable(sum_table, digits = 2, align = "l",
+      col.names = c("State", "Avg.CPI", "Homeless Population",
+                    "Total Population", "Percentage(%)"),
+      caption = "Summary Table")
+```
 
-Table observations 
+This summary table provides aggregate information of 10 states with the highest percentages of Homeless population. It also comes with the average CPI(Cosumer Price Index), total populaion of each state. We include this table to show you which states are most impacted by Homeless problem.
 
 ## Shelter Analysis
 ```{r homelessness, include=FALSE}
@@ -59,6 +66,15 @@ Table observations
 ```
 
 ## Chart 2 Observations 
+```{r cost_vs_homeless, include=FALSE}
+scatter_plot 
+```
+This is a preview. As you can see in the scatter plot, there is a potential correaltion between CPI and Homeless rate. However, it is not quite obvious. To visualize the potential correlation between higher cost of living and Homeless rate, we have included the following chart for better comparison. 
+```{r barchart, include=FALSE}
+bar_chart
+```
+
+This bar chart includes 10 representative cities ranging from cities with below average CPIs to those with the higest CPIs. As you can tell, as the CPI goes up, the Homelessness rates goes up. We have calculated the number of Homeless people in 1 Million people to eliminate the influence by city population(larger cities tend to have higher CPIs and higher population, which means more homeless people). Note that Atlanta and Seattle are two outlier in this comparison, with unusual high population of Homeless. However, this can't deny that Homeless rate is correlated with CPI.
 
 ## Chart 3 Observations 
 

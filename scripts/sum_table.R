@@ -17,4 +17,5 @@ sum_table <- pop_by_state %>%
   mutate(percentage = 100*total_hl/respop72016) %>%
   select(State, avg.cpi, total_hl, respop72016, percentage) %>%
   distinct() %>%
-  arrange(desc(percentage))
+  arrange(desc(percentage)) %>%
+  head(n = 10)
