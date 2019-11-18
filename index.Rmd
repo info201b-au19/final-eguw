@@ -5,16 +5,46 @@ date: "11/17/2019"
 output: html_document
 ---
 
-## Introductory paragraph:
+```{r setup, include=FALSE}
+library(dplyr)
+library(tidyr)
+library(leaflet)
+library(leaflet.minicharts)
 
+source("scripts/shelter.R")
+```
+
+## Introductory paragraph:
+Our domain of interest is Homelessness. In the Seattle King County area, there are about 12,500 homeless people living on the streets or in shelters. This not only makes the living environment of Seattle worse but also impacts the citizens’ daily life(crime, policing, junk/RVs, harassment etc). Confronted with this in our daily lives, we are interested in better understanding the issue locally and nationally including some of the factors contributing to it.
 
 ## Summary Paragraph
+
 
 ## Table 
 
 Table observations 
 
-## Chart 1 Observations 
+## Shelter Analysis
+```{r homelessness, include=FALSE}
+
+states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
+state_populations <- read.csv("data/homelessness/Population-by-state.csv", stringsAsFactors = FALSE)
+homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
+
+summary <- shelterAnalysis(states, state_populations, homelessness)
+
+map <- leaflet(data = summary, width = "100%", height = "400px") %>%
+  addTiles() %>%
+  setView(lng = -95.7129, lat = 37.0902, zoom = 2) %>% 
+  addMinicharts(
+    summary$longitude, summary$latitude,
+    type = "pie",
+    chartdata = select(summary, shelteredHomeless, unshelteredHomeless),
+    width = 20 / summary$sheltered
+  )
+
+map
+```
 
 ## Chart 2 Observations 
 
