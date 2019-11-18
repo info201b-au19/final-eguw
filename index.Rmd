@@ -14,16 +14,19 @@ library(knitr)
 library(ggplot2)
 library(ggpubr)
 library(stringr)
+library(plotly)
 
 source("scripts/shelter.R")
 source("scripts/cost_of_living.R")
+source("scripts/crime_rate.R")
 source("scripts/sum_info.R")
 source("scripts/sum_table.R")
 
 states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
 state_populations <- read.csv("data/homelessness/Population-by-state.csv", stringsAsFactors = FALSE)
 homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
-
+crime<- read.csv("data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
+                 stringsAsFactors = FALSE)
 cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
                     stringsAsFactors = FALSE)
 ```
@@ -66,5 +69,9 @@ get_charts(cpi_2016, homelessness)
   
 This bar chart includes 10 representative cities ranging from cities with below average CPIs to those with the higest CPIs. As you can tell, as the CPI goes up, the Homelessness rates goes up. We have calculated the number of Homeless people in 1 Million people to eliminate the influence by city population(larger cities tend to have higher CPIs and higher population, which means more homeless people). Note that Atlanta and Seattle are two outlier in this comparison, with unusual high population of Homeless. However, this can't deny that Homeless rate is correlated with CPI. We should be cocerned that Seattle's high homeless population has something to do with other factors such as lack of governance and bad drug control, etc. 
 
-## Chart 3 Observations 
-
+## Crime Rates Analysis
+This scatterplot of Homelessness vs Crime was included because one of the questions that we had was if there was a correlation between homelessness and crime rates in the US. Using the scatterplot, it is easier to visualize the trends of if the correlation is positive, negative, or no correlation at all.
+As you can see there is a slight positive correlation between homelessness and crime rates. 
+```{r crime, message=FALSE, echo= FALSE, warning=FALSE}
+get_scatterplot(homelessness, crime)
+```
