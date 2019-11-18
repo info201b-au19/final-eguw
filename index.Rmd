@@ -16,6 +16,8 @@ library(ggpubr)
 library(stringr)
 library(plotly)
 
+source("scripts/data_wrangling.R")
+
 source("scripts/shelter.R")
 source("scripts/cost_of_living.R")
 source("scripts/crime_rate.R")
@@ -29,6 +31,8 @@ crime<- read.csv("data/united-states-crime-rates-by-county/crime_data_w_populati
                  stringsAsFactors = FALSE)
 cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
                     stringsAsFactors = FALSE)
+
+homeless_population_analysis <- homelessPopulationAnalysis(states, state_populations, homelessness) 
 ```
 
 ## Topic
@@ -42,6 +46,9 @@ The average number of homeless people between 2007 - 2016 was `r summary$avg_uns
 Number of homeless veterans in 2016 was `r summary$homeless_vets`.
 Which state had the least homeless people in 2016? `r summary$latest_state_most_hl`.
 year with most homeless people `r summary$year_most_homeless`
+Total Homeless Vets: `r sum(homeless_population_analysis$homelessVets)`
+Total Homeless Under Age 18: `r sum(homeless_population_analysis$homelessU18)`
+Total Homeless With Family: `r sum(homeless_population_analysis$homelessWFam)`
 
 
 ## Table 
