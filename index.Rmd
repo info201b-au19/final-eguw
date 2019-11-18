@@ -12,13 +12,24 @@ library(leaflet)
 library(leaflet.minicharts)
 
 source("scripts/shelter.R")
+source("scripts/cost_of_living.R")
+source("scripts/crime_rate.R")
+source("scripts/sum_info.R")
+source("scripts/sum_table.R")
 ```
 
 ## Introductory paragraph:
 Our domain of interest is Homelessness. In the Seattle King County area, there are about 12,500 homeless people living on the streets or in shelters. This not only makes the living environment of Seattle worse but also impacts the citizens’ daily life(crime, policing, junk/RVs, harassment etc). Confronted with this in our daily lives, we are interested in better understanding the issue locally and nationally including some of the factors contributing to it.
 
 ## Summary Paragraph
-
+```{r summary, include=FALSE}
+homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv", stringsAsFactors = FALSE)
+summary <- get_summary_info(homelessness)
+```
+The average number of homeless people between 2007 - 2016 was `r summary$avg_unshel_hl`.
+Number of homeless veterans in 2016 was `r summary$homeless_vets`.
+Which state had the least homeless people in 2016? `r summary$latest_state_most_hl`.
+year with most homeless people `r summary$year_most_homeless`
 
 ## Table 
 

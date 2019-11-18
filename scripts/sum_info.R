@@ -8,7 +8,7 @@ get_summary_info <- function(dataset){
   
 # year with most homeless people  
   sum_data$year_most_homeless <- dataset %>%
-    mutate(year_num = year(as.Date(dataset$Year, format="%d/%m/%Y")),
+    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"),
            Count = as.numeric(as.factor(Count))) %>%
     group_by(year_num) %>%
     summarize(Count = sum(Count)) %>% 
@@ -17,7 +17,7 @@ get_summary_info <- function(dataset){
   
 # Which state had the most homeless people in 2016?
   sum_data$latest_state_most_hl <- dataset %>%
-    mutate(year_num = year(as.Date(dataset$Year, format="%d/%m/%Y")),
+    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"),
            Count = as.numeric(as.factor(Count))) %>%
     filter(year_num == 2016, Measures != "Total Homeless") %>%
     group_by(State) %>%
@@ -27,7 +27,7 @@ get_summary_info <- function(dataset){
   
 # Which state had the least homeless people in 2016?
   sum_data$latest_state_most_hl <- dataset %>%
-    mutate(year_num = year(as.Date(dataset$Year, format="%d/%m/%Y")),
+    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"),
            Count = as.numeric(as.factor(Count))) %>%
     filter(year_num == 2016, Measures != "Total Homeless") %>%
     group_by(State) %>%
@@ -44,7 +44,7 @@ get_summary_info <- function(dataset){
   
 # Number of homeless veterans in 2016
   sum_data$homeless_vets <- dataset %>%
-  mutate(year_num = year(as.Date(homelessness$Year, format="%d/%m/%Y")), 
+  mutate(year_num = as.Date(homelessness$Year, format="%d/%m/%Y"), 
          Count = as.numeric(as.factor(Count))) %>%
   filter(year_num == 2016, Measures == "Homeless Veterans") %>%
   summarize(Count = sum(Count)) %>%
@@ -52,7 +52,7 @@ get_summary_info <- function(dataset){
   
 # Which measure had the largest count in 2016?
   sum_data$sub_measure <- dataset %>%
-    mutate(year_num = year(as.Date(dataset$Year, format="%d/%m/%Y")), 
+    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"), 
            Count = as.numeric(as.factor(Count))) %>%
     filter(Measures != "Total Homeless", Measures != "Chronically Homeless", year_num == 2016) %>%
     group_by(Measures)%>%
