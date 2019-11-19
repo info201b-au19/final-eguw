@@ -1,11 +1,13 @@
 population_analysis <- function(states, state_populations, homelessness) {
 
+  # wrangle state_populations dataframe
   state_populations <- state_populations %>%
     select(GEO.display.label, respop72016) %>%
     rename(name = GEO.display.label, population = respop72016) %>%
     slice(-1) %>%
     mutate(population = as.integer(population))
-
+  
+  # filter and wrangle homelessness dataframe
   homelessness2016 <- filter(homelessness, Year == "1/1/2016") %>%
     mutate(Count = as.integer(gsub(",", "", Count))) %>%
     spread(Measures,
@@ -37,9 +39,9 @@ population_analysis <- function(states, state_populations, homelessness) {
       homeless_fam = sum(homeless_fam)
     ) %>%
     mutate(sheltered = sheltered_homeless / total_homeless)
-
+  
+  # join tables
   state_stats <- left_join(states, state_populations)
-
   summary <- left_join(homelessness2016, state_stats) %>%
     filter(state != "GU", state != "VI")
 

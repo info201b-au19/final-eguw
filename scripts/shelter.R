@@ -3,6 +3,7 @@
 library(dplyr)
 library(tidyr)
 
+# return map illustrating homeless population with shelter
 shelter_analysis <- function(summary) {
 
   basemap <- leaflet(data = summary, width = "100%", height = "400px") %>%
