@@ -56,7 +56,7 @@ The visualization below illustrates the proportion of Sheltered Homeless to Unsh
 
 You can see that states with more moderate climates, such as California and Florida have greater portions of unsheltered homeless.
 ```{r homelessness, message=FALSE, echo=FALSE, warning=FALSE}
-shelterAnalysis(states, state_populations, homelessness)
+shelterAnalysis(homeless_population_analysis)
 ```
 
 ## CPI Analysis
