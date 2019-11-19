@@ -31,7 +31,7 @@ crime<- read.csv("data/united-states-crime-rates-by-county/crime_data_w_populati
 cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
                     stringsAsFactors = FALSE)
 
-homeless_population_analysis <- homelessPopulationAnalysis(states, state_populations, homelessness) 
+homeless_population_analysis <- population_analysis(states, state_populations, homelessness) 
 ```
 
 ## Topic
@@ -41,7 +41,7 @@ Our domain of interest is Homelessness. In the Seattle King County area, there a
 ```{r summary, include=FALSE}
 summary <- get_summary_info(homeless_population_analysis)
 ```
-In 2016 there were `r summary$total_homeless` in the US, with an average of `r summary$avg_homeless` in each State. `r summary$state_least_homeless` had the fewest homeless and `r summary$state_most_homeless` the most.  There were a total of `r summary$homeless_vets` homeless veterans, `r summary$homeless_u18` homeless under 18 years old, and `r summary$homeless_family` homeless with families.
+In 2016 there were `r summary$total_homeless` homeless in the US, with an average of `r summary$avg_homeless` in each State. `r summary$state_least_homeless` had the fewest homeless and `r summary$state_most_homeless` the most.  There were a total of `r summary$homeless_vets` homeless veterans, `r summary$homeless_u18` homeless under 18 years old, and `r summary$homeless_family` homeless with families.
 
 ## Table 
 
@@ -56,11 +56,11 @@ The visualization below illustrates the proportion of Sheltered Homeless to Unsh
 
 You can see that states with more moderate climates, such as California and Florida have greater portions of unsheltered homeless.
 ```{r homelessness, message=FALSE, echo=FALSE, warning=FALSE}
-shelterAnalysis(homeless_population_analysis)
+shelter_analysis(homeless_population_analysis)
 ```
 
 ## CPI Analysis
-The following is a preview. As you can see in the scatter plot, there is a potential correaltion between CPI and Homeless rate. However, it is not quite obvious. To visualize the potential correlation between higher cost of living and Homeless rate, we have included another chart for better comparison.  
+The following is a preview. As you can see in the scatter plot, there is a potential correlation between CPI and Homeless rate. However, it is not quite obvious. To visualize the potential correlation between higher cost of living and Homeless rate, we have included another chart for better comparison.  
 
 ```{r charts, fig.width=12, fig.height=5, message=FALSE, echo=FALSE, warning=FALSE}
 get_charts(cpi_2016, homelessness)
