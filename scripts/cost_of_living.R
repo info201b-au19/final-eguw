@@ -28,7 +28,7 @@ get_charts <- function(df_temp, df_temp2) {
     mutate(Count = gsub(",", "", Count)) %>%
     mutate(Count = as.numeric(Count)) %>%
     mutate(CPI = as.numeric(CPI)) %>%
-    mutate(CPI2 = CPI*50)
+    mutate(CPI2 = CPI * 50)
   
   # Just a preview, since im doing bar chart rather than scatter plot
   scatter_plot <- ggplot() +
@@ -46,7 +46,7 @@ get_charts <- function(df_temp, df_temp2) {
       mutate(total_pop_millions = as.numeric(c("0.17", "0.54", "1.5", "0.67",
                                                "0.49", "1.58", "1.42", "0.74",
                                                "1.04", "0.88"))) %>%
-      mutate(rate = Count/total_pop_millions)
+      mutate(rate = Count / total_pop_millions)
 
   # To put cities in ascending order of cpi
   representative$City <- factor(representative$City, representative$City[1:10])
@@ -56,7 +56,8 @@ get_charts <- function(df_temp, df_temp2) {
     geom_bar(aes(y = total, color = event, fill = event),
              stat = "identity", position = position_dodge(width = 0.8),
              width = 0.8, color = "white") +
-    scale_y_continuous(sec.axis = sec_axis(~./50, name = "CPI (Rent included)")) +
+    scale_y_continuous(sec.axis = sec_axis(~. / 50, 
+                                           name = "CPI (Rent included)")) +
     scale_fill_manual(
       values = c("aquamarine4", "indianred2"),
       labels = c("CPI", "Homeless")
@@ -65,7 +66,7 @@ get_charts <- function(df_temp, df_temp2) {
     ggtitle("2016 CPI / Homeless Rate (in 10 representative cities)") +
     theme(axis.text.x = element_text(angle = 35))
   
-  p <- ggarrange(scatter_plot, bar_chart, widths = c(2,3),
+  p <- ggarrange(scatter_plot, bar_chart, widths = c(2, 3),
             ncol = 2, nrow = 1)
   
   return(p)
