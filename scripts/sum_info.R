@@ -6,59 +6,30 @@ get_summary_info <- function(dataset){
   
   sum_data <- list()
   
-# year with most homeless people  
-  sum_data$year_most_homeless <- dataset %>%
-    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"),
-           Count = as.numeric(as.factor(Count))) %>%
-    group_by(year_num) %>%
-    summarize(Count = sum(Count)) %>% 
-    filter(Count == max(Count)) %>%
-    pull(year_num)
+# state with least homeless people
+  sum_data$state_least_homeless <- dataset %>% 
+    filter(totalHomeless == min(totalHomeless)) %>% 
+    pull(name)
+    
+# state with most homeless people  
+  sum_data$state_most_homeless <- dataset %>% 
+    filter(totalHomeless == max(totalHomeless)) %>% 
+    pull(name)
   
-# Which state had the most homeless people in 2016?
-  sum_data$latest_state_most_hl <- dataset %>%
-    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"),
-           Count = as.numeric(as.factor(Count))) %>%
-    filter(year_num == 2016, Measures != "Total Homeless") %>%
-    group_by(State) %>%
-    summarize(Count = sum(Count)) %>% 
-    filter(Count == max(Count)) %>% 
-    pull(State)
-  
-# Which state had the least homeless people in 2016?
-  sum_data$latest_state_most_hl <- dataset %>%
-    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"),
-           Count = as.numeric(as.factor(Count))) %>%
-    filter(year_num == 2016, Measures != "Total Homeless") %>%
-    group_by(State) %>%
-    summarize(Count = sum(Count)) %>% 
-    filter(Count == min(Count)) %>% 
-    pull(State)
-  
-# Average number of unsheltered homeless people (2007-2016)
-  sum_data$avg_unshel_hl <- dataset %>%
-    mutate(Count = as.numeric(as.factor(Count))) %>%
-    filter(Measures == "Unsheltered Homeless") %>%
-    summarize(Count = mean(Count)) %>% 
-    pull(Count)
-  
+# Average number of homeless per State
+  sum_data$avg_homeless <- as.integer(mean(dataset$totalHomeless))
+    
+# Total number of homeless  
+  sum_data$total_homeless <- sum(dataset$totalHomeless)
+    
 # Number of homeless veterans in 2016
-  sum_data$homeless_vets <- dataset %>%
-  mutate(year_num = as.Date(homelessness$Year, format="%d/%m/%Y"), 
-         Count = as.numeric(as.factor(Count))) %>%
-  filter(year_num == 2016, Measures == "Homeless Veterans") %>%
-  summarize(Count = sum(Count)) %>%
-  pull(Count)
+  sum_data$homeless_vets <- sum(dataset$homelessVets)
   
-# Which measure had the largest count in 2016?
-  sum_data$sub_measure <- dataset %>%
-    mutate(year_num = as.Date(dataset$Year, format="%d/%m/%Y"), 
-           Count = as.numeric(as.factor(Count))) %>%
-    filter(Measures != "Total Homeless", Measures != "Chronically Homeless", year_num == 2016) %>%
-    group_by(Measures)%>%
-    summarize(Count = sum(Count))%>%
-    filter(Count == max(Count)) %>%
-    pull(Measures)
+# Number of homeless with family
+  sum_data$homeless_family <- sum(dataset$homelessWFam)
+    
+# Number of homeless under 18 years old  
+  sum_data$homeless_u18 <- sum(dataset$homelessU18)
   
   return(sum_data)
   
