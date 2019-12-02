@@ -1,7 +1,7 @@
 cost_of_living <- tabPanel(
   "Cost of Living",
   setBackgroundColor("#DEEEFF"),
-  titlePanel(em("Is Homeless rate realted to Cost of Living?")),
+  titlePanel(em("Is Homeless rate related to Cost of Living?")),
   sidebarLayout(
     sidebarPanel(
       helpText(h4(em("Settings"))),
