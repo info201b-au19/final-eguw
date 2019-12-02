@@ -9,10 +9,10 @@ source("./ui/summary.R")
 
 # Build layout
 ui <- navbarPage(
-    "Homelessness",         # application title
-    overview,               # include the overview page
-    homeless_demographics,  # include the interactive page 1
-    interactive_2,          # include the interactive page 2
-    interactive_3,          # include the interactive page 3
-    summary                 # include the summary page
+    "Homelessness",                 # application title
+    overview,                       # include the overview page
+    homeless_demographics,          # include the interactive page 1
+    interactive_2,                  # include the interactive page 2
+    interactive_3,                  # include the interactive page 3
+    summary                         # include the summary page
 )
