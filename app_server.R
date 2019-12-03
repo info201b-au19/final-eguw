@@ -15,6 +15,7 @@ library(shinyWidgets)
 source("./scripts/data_wrangling.R")
 source("scripts/shelter.R")
 source("scripts/cos_charts.R")
+source("scripts/crime_rate.R")
 
 # Read in datasets
 cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
@@ -27,6 +28,8 @@ state_populations <- read.csv("data/homelessness/Population-by-state.csv",
 homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv",
   stringsAsFactors = FALSE
 )
+crime_rate <- read.csv("data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
+                       stringsAsFactors = FALSE)
 
 # Define server, and pass input values to visualization functions
 server <- shinyServer(function(input, output) {
