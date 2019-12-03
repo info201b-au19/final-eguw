@@ -1,7 +1,7 @@
 # Define overview page layout
 overview <- tabPanel(
   "Overview",
-  titlePanel("Overview"),
+  titlePanel(em("Overview")),
   fluidRow(
     column(
       8,
