@@ -14,6 +14,7 @@ overview <- tabPanel(
         understanding the issue locally and nationally including some of the
         factors contributing to it.", style = "font-size:12pt"),
       HTML('<center><img src="img.jpg" width = "1200" height = "600"></center>'),
+      h2("Our Data Source"),
       tableOutput("table"),
       tags$style(type="text/css", "#table {font-size:12pt;}")
     )
