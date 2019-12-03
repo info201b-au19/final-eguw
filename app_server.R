@@ -53,4 +53,16 @@ server <- shinyServer(function(input, output) {
     two most relevant indices to Homeless rate. Which means the homeless
     population is highly realated to the Cost of living in a city.")
   })
+  
+  output$table <- renderTable({
+    source <- data.frame(source = c("Homeless Population", "Cost of Living", "US Crime Rates"),
+                         Collection_Methodology = c("Combines Point-in-Time homeless count estimates with data from the Department of Housing and Urband Development.",
+                                                    "Unknown", "Takes information from the US census and national crime data from the counties in the US"),
+                         Observations = c("86,530", "540", "3136"),
+                         Features = c("6", "8", "24"),
+                         Questions = c("What homeless populations most often secure shelter, and how does it vary between states?",
+                                       "Is there a positive relation between Consumer Price Index(CPI) and homeless population?",
+                                       "Is there a correlation between crime rates and homelessness in certain regions?")
+    )
+  })
 })
