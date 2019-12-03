@@ -56,7 +56,13 @@ server <- shinyServer(function(input, output) {
   })
   
   output$table <- renderTable({
-    source <- data.frame(source = c("Homeless Population", "Cost of Living", "US Crime Rates"),
+    sources <- c("Homeless Population", "Cost of Living", "US Crime Rates")
+    urls <- c("https://www.kaggle.com/adamschroeder/homelessness/data#",
+              "https://www.kaggle.com/andytran11996/cost-of-living#cost-of-living-2018.csv",
+              "https://www.kaggle.com/mikejohnsonjr/united-states-crime-rates-by-county")
+    refs <- paste0("<a href='",  urls, "' target='_blank'>", sources, "</a>")
+    
+    source <- data.frame(source = refs,
                          Collection_Methodology = c("Combines Point-in-Time homeless count estimates with data from the Department of Housing and Urband Development.",
                                                     "Unknown", "Takes information from the US census and national crime data from the counties in the US"),
                          Observations = c("86,530", "540", "3136"),
@@ -64,6 +70,6 @@ server <- shinyServer(function(input, output) {
                          Questions = c("What homeless populations most often secure shelter, and how does it vary between states?",
                                        "Is there a positive relation between Consumer Price Index(CPI) and homeless population?",
                                        "Is there a correlation between crime rates and homelessness in certain regions?")
-    )
-  })
+              )
+  }, width = 1100, sanitize.text.function = function(x) x)
 })
