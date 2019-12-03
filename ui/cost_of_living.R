@@ -1,6 +1,6 @@
 cost_of_living <- tabPanel(
   "Cost of Living",
-  setBackgroundColor("#DEEEFF"),
+  setBackgroundColor("#C7D0D8"),
   titlePanel(em("Is Homeless rate related to Cost of Living?")),
   sidebarLayout(
     sidebarPanel(
@@ -26,7 +26,7 @@ cost_of_living <- tabPanel(
           obvious. To visualize the potential correlation between higher cost
           of living and Homeless rate, we have included another chart for
           better comparison. Also, you can choose other indices for
-          comparison!", style = "font-size:16pt"
+          comparison!", style = "font-size:14pt"
       ),
       fluidRow(
         column(width = 5, plotlyOutput("scatter")),
@@ -44,7 +44,7 @@ cost_of_living <- tabPanel(
         can't deny that Homeless rate is correlated with CPI. We should be
         cocerned that Seattle's high homeless population has something to do
         with other factors such as lack of governance and bad drug
-        control, etc.", style = "font-size:16pt"
+        control, etc.", style = "font-size:14pt"
       )
     )
   )
