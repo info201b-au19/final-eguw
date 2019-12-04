@@ -12,9 +12,9 @@ CR_HR <- tabPanel(
       selectInput(
         inputId = "selected", 
         label = "Select Crime",
-        choices = list("crime_rate" = 3, "murder_rate" = 4, "robbery_rate" = 5, 
-                       "rape_rate" = 6, "assault_rate" = 7, "burglary_rate" = 8, 
-                       "larceny_rate" = 9, "mvtheft_rate" = 10), 
+        choices = c("crime_rate", "murder_rate", "robbery_rate", 
+                       "rape_rate", "assault_rate", "burglary_rate", 
+                       "larceny_rate", "mvtheft_rate"), 
         selected = "crime_rate"
       ), 
       

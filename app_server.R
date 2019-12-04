@@ -85,3 +85,4 @@ server <- shinyServer(function(input, output) {
     )
   }, width = 1100, sanitize.text.function = function(x) x)
 })
+
