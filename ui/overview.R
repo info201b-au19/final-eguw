@@ -17,7 +17,7 @@ overview <- tabPanel(
       h2("We have the following questions", style = "font-family: 'Trebuchet MS'"),
       tags$ul(
         tags$li("What populations are most impacted by homelessness?"),
-        tags$li("What homeless populations most often secure shelter?"), 
+        tags$li("How many homeless are without shelter?"), 
         tags$li("Is there a positive relation between Consumer Price Index(CPI) and homeless population?"), 
         tags$li("Is there a correlation between crime rates and homelessness in certain regions?"),
         style = "font-family: 'Trebuchet MS'; font-size:14pt;
