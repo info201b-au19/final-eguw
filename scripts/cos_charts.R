@@ -48,6 +48,23 @@ get_chart <- function(df1, df2, control, ctype) {
   } else if (control == "Groceries.Index") {
     scatter_plot <- scatter_plot + xlim(50, 100)
   }
+  
+  reg <- ggscatter(df_combined, control, "Count",
+                  add = "reg.line",  # Add regressin line
+                  add.params = list(color = "red", fill = "lightgray"), # Customize reg. line
+                  conf.int = TRUE # Add confidence interval
+    ) + 
+    xlim(40, 90) +
+    ylim(0, 12000) +
+    theme(
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.background = element_rect(fill = "transparent", colour = NA),
+      plot.background = element_rect(fill = "transparent", colour = NA)
+    )
+    
+  # Add correlation coefficient
+  reg <- reg + stat_cor(method = "pearson", label.x = 65, label.y = 7500)
 
   df_combined$CPI2 <- df_combined[[control]] * 50
 
@@ -95,5 +112,7 @@ get_chart <- function(df1, df2, control, ctype) {
     return(scatter_plot)
   } else if (ctype == 2) {
     return(bar_chart)
+  } else if (ctype == 3) {
+    return(reg)
   }
 }
