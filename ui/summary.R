@@ -20,7 +20,7 @@ summary <- tabPanel(
   ),
   fluidRow(
     column(
-      3,
+      4,
       offset = 2,
       plotOutput("reg")
     ),
@@ -37,7 +37,7 @@ summary <- tabPanel(
       indicating strong evidence that the there is correlation between
       CPI(w/ Rent) and Homeless Population.")
     ),
-    column(5),
+    column(3),
   ),
   fluidRow(
     column(

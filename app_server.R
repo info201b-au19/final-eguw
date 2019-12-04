@@ -56,7 +56,7 @@ server <- shinyServer(function(input, output) {
   output$reg <- renderPlot({
     reg <- get_chart(cpi_2016, homelessness, "Cost.of.Living.Plus.Rent.Index", 3)
     reg
-  }, height = 325, width = 400, bg = "transparent")
+  }, height = 375, width = 450, bg = "transparent")
   
   output$space <- renderUI({
     HTML(paste0("<br><br><br><br><br>"))
