@@ -21,8 +21,6 @@ summary <- tabPanel(
         the portion of homeless with shelter. California for example had nearly 
         twice as many unsheltered homeless as sheltered in 2016. 
         Where as only 4% of the homeless were unsheltered in Nebraska."),
-
-      # add broader implication?
       br(),
       br()
     ),
@@ -58,7 +56,6 @@ summary <- tabPanel(
         indicating strong evidence that the there is correlation between
         CPI(w/ Rent) and Homeless Population."),
 
-      # add broader implication?
       br(),
       br()
     ),
