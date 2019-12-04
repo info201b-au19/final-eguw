@@ -5,6 +5,8 @@ homeless_demographics <- tabPanel(
                 style = "font-family: 'Trebuchet MS'")),
   sidebarLayout(
     sidebarPanel(
+      #select control to allow user to choose which homeless pop
+      #they want to see
       selectInput(inputId = "analysis",
                   label = "Analysis",
                   choices = c("Shelter", "Family"),
