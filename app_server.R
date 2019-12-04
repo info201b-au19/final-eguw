@@ -19,17 +19,17 @@ source("scripts/crime_rate.R")
 
 # Read in datasets
 cpi_2016 <- read.csv("data/cost-of-living/cost-of-living-2016.csv",
-  stringsAsFactors = FALSE
+                     stringsAsFactors = FALSE
 )
 states <- read.csv("data/homelessness/states.csv", stringsAsFactors = FALSE)
 state_populations <- read.csv("data/homelessness/Population-by-state.csv",
-  stringsAsFactors = FALSE
+                              stringsAsFactors = FALSE
 )
 homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv",
-  stringsAsFactors = FALSE
+                         stringsAsFactors = FALSE
 )
 crime_stats <- read.csv("data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
-                       stringsAsFactors = FALSE)
+                        stringsAsFactors = FALSE)
 
 # Define server, and pass input values to visualization functions
 server <- shinyServer(function(input, output) {
@@ -42,16 +42,16 @@ server <- shinyServer(function(input, output) {
     sc <- ggplotly(sc, width = 500) %>% layout(autosize = FALSE)
     sc
   })
-
+  
   output$bar <- renderPlot({
     bar <- get_chart(cpi_2016, homelessness, input$control1, 2)
     bar
   }, height = 500, width = 650, bg = "transparent")
-
+  
   output$space <- renderUI({
     HTML(paste0("<br><br><br><br><br>"))
   })
-
+  
   output$note <- renderText({
     paste(" Note: You may find that some index(es) is not strongly or not at
     all correlated to homeless rate. We concluded that CPI(w/ Rent) and CPI are
@@ -63,7 +63,7 @@ server <- shinyServer(function(input, output) {
   #figure out how to choose the text that was selected
   #not just the value
   output$crime_scats <- renderPlotly({
-    getscatplot(homelessness, crime_stats, input$selected, )
+    getscatplot(homelessness, crime_stats, input$selected)
   })
   
   output$table <- renderTable({
@@ -81,6 +81,6 @@ server <- shinyServer(function(input, output) {
                          Questions = c("What homeless populations most often secure shelter, and how does it vary between states?",
                                        "Is there a positive relation between Consumer Price Index(CPI) and homeless population?",
                                        "Is there a correlation between crime rates and homelessness in certain regions?")
-              )
+    )
   }, width = 1100, sanitize.text.function = function(x) x)
 })

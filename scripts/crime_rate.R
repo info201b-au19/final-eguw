@@ -6,7 +6,7 @@ library(plotly)
 # function that will return the scatterplot that the user selects
 # from the selection bar
 
-getscatplot <- function(data_one, data_two, type_crime, choice_num) {
+getscatplot <- function(data_one, data_two, choice_num) {
   twenty_sixteen_homepop <- data_one %>%
     mutate(
       year_num = (as.Date(data_one$Year, format = "%d/%m/%Y")),
@@ -17,7 +17,7 @@ getscatplot <- function(data_one, data_two, type_crime, choice_num) {
     summarize(state_hl = sum(Count)) %>%
     filter(State != "GU", State != "PR", State != "VI") %>%
     mutate(homeless_per_100000 = (state_hl) / 100000)
-
+  
   crime_by_state <- data_two %>%
     mutate(state = substr(
       data_two$county_name,
@@ -53,7 +53,10 @@ getscatplot <- function(data_one, data_two, type_crime, choice_num) {
     larceny_rate = crime_by_state$larceny_rate,
     mvtheft_rate = crime_by_state$mvtheft_rate
   )
-
+  
+  #
+  type_crime <- colnames(crime_hl_by_state[choice_num])
+  
   scatplot <- plot_ly(
     data = crime_hl_by_state,
     x = ~homeless_rate,
@@ -71,6 +74,6 @@ getscatplot <- function(data_one, data_two, type_crime, choice_num) {
       yaxis = list(title = colnames(crime_hl_by_state[choice_num])),
       xaxis = list(title = colnames(crime_hl_by_state[2]))
     )
-
+  
   return(scatplot)
 }
