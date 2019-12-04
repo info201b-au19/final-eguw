@@ -43,8 +43,18 @@ summary <- tabPanel(
     column(
       8,
       offset = 2,
-      h3("Questions here"),
-      p("Crime rate summary here")
+      h3("Which crimes are most common amongst the homeless?"),
+      p("From comparing the graphs, you can see that mostly non-violent crimes (i.e. burglary and larceny) 
+      are more common than violent ones(i.e. rape and assault). You might be asking yourself, 'why?'.
+      Although we cannot answer definitively, one possible answer is that the homeless
+      are just trying to by. Since they do not have the resources to properly
+      provide for themselves or even their families, they could possibly turn to 
+      theft to attain those resources."),
+      h3("Overall, Is there a correlation between homlessness rates and crime rates?"),
+      p("Yes there is, as you can see from our graph, there is a slight positive 
+      correlation between crime rates and homelessness. Meaning that as state crime 
+      rates go up, so do state homelessness rates. Although this tells us that there 
+      is a positive correlation, it does not tell us causation of the results.")
     )
   )
 )

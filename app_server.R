@@ -35,9 +35,12 @@ homeless_population_analysis <- population_analysis(states, state_populations, h
 
 # Define server, and pass input values to visualization functions
 server <- shinyServer(function(input, output) {
+  
+  #shelter visualization
   output$map <- renderLeaflet({
     shelter_analysis(homeless_population_analysis, input$analysis)
   })
+  
   #cost of living
   output$scatter <- renderPlotly({
     sc <- get_chart(cpi_2016, homelessness, input$control1, 1)
@@ -71,6 +74,10 @@ server <- shinyServer(function(input, output) {
   
   output$crimes_scats <- renderPlotly({
     getscatplot(homelessness, crime_stats, input$selected)
+  })
+  
+  output$ratesnote <- renderText({
+    paste("Please note: All rates are per 100000 people in that state")
   })
   
   output$table <- renderTable({

@@ -32,13 +32,13 @@ getscatplot <- function(data_one, data_two, choice) {
     ) %>%
     summarize(
       crime_rate_per_100000 = mean(crime_rate_per_100000),
-      murder_rate = mean(MURDER) / 100,
-      rape_rate = mean(RAPE) / 100,
-      rob_rate = mean(ROBBERY) / 100,
-      assault_rate = mean(AGASSLT) / 100,
-      burg_rate = mean(BURGLRY) / 100,
-      larceny_rate = mean(LARCENY) / 100,
-      mvtheft_rate = mean(MVTHEFT) / 100
+      murder_rate = mean(MURDER) / 100000,
+      rape_rate = mean(RAPE) / 100000,
+      rob_rate = mean(ROBBERY) / 100000,
+      assault_rate = mean(AGASSLT) / 100000,
+      burg_rate = mean(BURGLRY) / 100000,
+      larceny_rate = mean(LARCENY) / 100000,
+      mvtheft_rate = mean(MVTHEFT) / 100000
     )
   # joint the data sets together
   crime_hl_by_state <- data.frame(
@@ -54,18 +54,24 @@ getscatplot <- function(data_one, data_two, choice) {
     mvtheft_rate = crime_by_state$mvtheft_rate
   )
 
-  chosen_crime <- crime_hl_by_state %>%
-    select(state, homeless_rate, choice)
-  
   scatplot <- plot_ly(
     data = crime_hl_by_state,
     x = ~homeless_rate,
-    y = crime_hl_by_state[,choice],
+    y = crime_hl_by_state[, choice],
     type = "scatter",
     alpha = .7,
-    hovertext = crime_by_state$state,
-    mode = "markers"
-  )
+    hoverinfo = "text",
+    text = ~paste("State:", crime_hl_by_state$state, '</br></br>',
+                  "HOMELESS_RATE =", crime_hl_by_state$homeless_rate,
+                  '</br>', toupper(choice), "=", crime_hl_by_state[, choice]),
+    mode = "markers",
+    color = "darkred"
+  ) %>%
+    layout(
+      title = paste("homeless_rate vs", choice),
+      xaxis = list(title = "homeless_rate"), 
+      yaxis = list(title = choice)
+    )
 
   return(scatplot)
 }
