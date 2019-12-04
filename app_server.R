@@ -41,6 +41,18 @@ server <- shinyServer(function(input, output) {
     shelter_analysis(homeless_population_analysis, input$analysis)
   })
   
+  output$fam_demographic_table <- renderTable({
+    select(homeless_population_analysis, state, homeless_indiv, homeless_fam) %>%
+    arrange(-homeless_indiv) %>% 
+    top_n(5)
+  }, width = "75%")
+  
+  output$shelter_demographic_table <- renderTable({
+    select(homeless_population_analysis, state, sheltered_homeless, unsheltered_homeless) %>%
+      arrange(-unsheltered_homeless) %>% 
+      top_n(5)
+  }, width = "75%")
+  
   #cost of living
   output$scatter <- renderPlotly({
     sc <- get_chart(cpi_2016, homelessness, input$control1, 1)
