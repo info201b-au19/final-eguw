@@ -34,7 +34,8 @@ cost_of_living <- tabPanel(
       #output of charts
       fluidRow(
         column(width = 5, plotlyOutput("scatter")),
-        column(width = 7, plotOutput("bar"))),
+        column(1),
+        column(width = 6, plotOutput("bar"))),
       htmlOutput(outputId = "space"),
       verbatimTextOutput(outputId = "note"),
       p("This bar chart includes 10 representative cities ranging from cities
