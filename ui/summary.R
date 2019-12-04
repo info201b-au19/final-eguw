@@ -4,7 +4,7 @@ summary <- tabPanel(
   titlePanel(em("Conclusions", style = "font-family: 'Trebuchet MS'")),
   fluidRow(
     column(
-      8,
+      4,
       offset = 2,
       h2(strong("Homeless Populations",
         style = "font-family: 'Trebuchet MS'"
@@ -22,11 +22,21 @@ summary <- tabPanel(
         twice as many unsheltered homeless as sheltered in 2016. 
         Where as only 4% of the homeless were unsheltered in Nebraska."),
 
-      # add broader implication
+      # add broader implication?
       br(),
       br()
-    )
+    ),
+    column(
+      4,
+      offset = 2,
+      tableOutput("fam_demographic_table"),
+      br(),
+      tableOutput("shelter_demographic_table"),
+      br()
+    ),
+    
   ),
+  
   fluidRow(
     column(
       4,
