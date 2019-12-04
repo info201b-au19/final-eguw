@@ -2,15 +2,16 @@
 homeless_demographics <- tabPanel(
   "Homeless Demograpics",
   titlePanel(em("Homeless Population Statistics", style = "font-family: 'Trebuchet MS'")),
-  fluidRow(
-    column(
-      8,
-      offset = 2,
-      leafletOutput("map"),
+  sidebarLayout(
+    sidebarPanel(
       selectInput(inputId = "analysis",
                   label = "Analysis",
                   choices = c("Shelter","Family"),
                   selected = "Shelter")
+    ),
+    mainPanel(
+      leafletOutput("map")
     )
   )
+  
 )
