@@ -17,7 +17,10 @@ shelter_analysis <- function(summary, choice) {
       chartdata = shelter,
       colorPalette = colors,
       legend = FALSE,
-      type = "pie"
+      type = "pie",
+      popup = popupArgs(
+        labels = c("Sheltered Homeless", "Unsheltered Homeless")
+      )
     ) %>% 
     addLegend(
       "topright",
@@ -34,7 +37,10 @@ shelter_analysis <- function(summary, choice) {
       chartdata = family,
       colorPalette = colors,
       legend = FALSE,
-      type = "pie"
+      type = "pie",
+      popup = popupArgs(
+        labels = c("Homeless Individuals", "Homeless Families")
+      )
     ) %>% 
     addLegend(
       "topright",
