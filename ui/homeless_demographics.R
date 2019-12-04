@@ -1,6 +1,6 @@
 # Define interactive page 1
 homeless_demographics <- tabPanel(
-  "Homeless Demograpics",
+  "Homeless Demographics",
   titlePanel(em("Homeless Population Statistics", style = "font-family: 'Trebuchet MS'")),
   sidebarLayout(
     sidebarPanel(
