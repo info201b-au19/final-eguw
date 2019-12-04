@@ -7,7 +7,10 @@ homeless_demographics <- tabPanel(
       selectInput(inputId = "analysis",
                   label = "Analysis",
                   choices = c("Shelter","Family"),
-                  selected = "Shelter")
+                  selected = "Shelter"),
+      p("Use the control above and map to view different aspects of the homeless population, 
+        and how they vary from state to state. You can see the ratio of sheltered to unsheltered homeless, 
+        as well as those which have family and those who do not.")
     ),
     mainPanel(
       leafletOutput("map")

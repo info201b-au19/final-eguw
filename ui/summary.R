@@ -11,7 +11,6 @@ summary <- tabPanel(
       p("There is a clear trend of greater amounts of homeless individuals without family,  
       then those with. This is likely due to the safety net that a family typically provides, 
       keeping family members out of homelessness."),
-      
       h3("How many homeless are sheltered?"),
       p("There are vast disparities between states when it comes to the portion of homeless with shelter. 
       California for example had nearly twice as many unsheltered homeless as sheltered in 2016. 
