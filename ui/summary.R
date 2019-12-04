@@ -2,7 +2,6 @@
 summary <- tabPanel(
   "Summary",
   titlePanel(em("Conclusions", style = "font-family: 'Trebuchet MS'")),
-  
   fluidRow(
     column(
       8,
@@ -33,12 +32,19 @@ summary <- tabPanel(
       are with the highest homeless rate among all cities in the United States
       (and they all have high CPIs)."),
       h3("Is there a relationship between CPI and homeless ratio?"),
-      p("Yes. Take a look at the regression line we drew you will find that
+      p("Yes. Take a look at the regression line we drew, you will find that
       R = 0.54, meaning the model fits 54% of the data and the p-value = 3e-08,
       indicating strong evidence that the there is correlation between
       CPI(w/ Rent) and Homeless Population.")
     ),
     column(5),
   ),
-  fluidRow()
+  fluidRow(
+    column(
+      8,
+      offset = 2,
+      h3("Questions here"),
+      p("Crime rate summary here")
+    )
+  )
 )
