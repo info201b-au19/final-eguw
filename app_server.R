@@ -62,9 +62,8 @@ server <- shinyServer(function(input, output) {
   })
   
   #crime
-  #figure out how to choose the text that was selected
-  #not just the value
-  output$crime_scats <- renderPlotly({
+  
+  output$crimes_scats <- renderPlotly({
     getscatplot(homelessness, crime_stats, input$selected)
   })
   

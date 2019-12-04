@@ -21,8 +21,8 @@ getscatplot <- function(data_one, data_two, choice_num) {
   crime_by_state <- data_two %>%
     mutate(state = substr(
       data_two$county_name,
-      nchar(crime$county_name) - 2,
-      nchar(crime$county_name)
+      nchar(data_two$county_name) - 2,
+      nchar(data_two$county_name)
     )) %>%
     group_by(state) %>%
     select(
@@ -53,8 +53,7 @@ getscatplot <- function(data_one, data_two, choice_num) {
     larceny_rate = crime_by_state$larceny_rate,
     mvtheft_rate = crime_by_state$mvtheft_rate
   )
-  
-  #
+
   type_crime <- colnames(crime_hl_by_state[choice_num])
   
   scatplot <- plot_ly(
@@ -64,7 +63,7 @@ getscatplot <- function(data_one, data_two, choice_num) {
     type = "scatter",
     alpha = .7,
     hovertext = crime_by_state$state,
-    mode = "markers",
+    mode = "markers"
   ) %>%
     layout(
       title = paste(
@@ -74,6 +73,7 @@ getscatplot <- function(data_one, data_two, choice_num) {
       yaxis = list(title = colnames(crime_hl_by_state[choice_num])),
       xaxis = list(title = colnames(crime_hl_by_state[2]))
     )
-  
+
   return(scatplot)
 }
+
