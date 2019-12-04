@@ -56,13 +56,14 @@ get_chart <- function(df1, df2, control, ctype) {
       City == "Atlanta" | City == "Detroit" | City == "Tucson" |
       City == "Springfield" | City == "San Jose" |
       City == "San Francisco" | City == "San Antonio") %>%
-    arrange(CPI2) %>%
+    arrange(Count) %>%
     mutate(total_pop_millions = as.numeric(c(
-      "0.17", "0.54", "1.5", "0.67",
-      "0.49", "1.58", "1.42", "0.74",
-      "1.04", "0.88"
+      "0.17", "0.54", "0.67", "1.5",
+      "0.49", "1.58", "1.04", "0.88",
+      "1.42", "0.72"
     ))) %>%
-    mutate(rate = Count / total_pop_millions)
+    mutate(rate = Count / total_pop_millions) %>%
+    arrange(CPI2)
 
   # To put cities in ascending order of cpi
   representative$City <- factor(representative$City, representative$City[1:10])
