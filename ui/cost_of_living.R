@@ -5,6 +5,8 @@ cost_of_living <- tabPanel(
   sidebarLayout(
     sidebarPanel(
       helpText(h4(em("Settings"))),
+      
+      #Select which Index the user wants to see
       selectInput(
         inputId = "control1",
         label = "Choose an Index",
@@ -28,6 +30,8 @@ cost_of_living <- tabPanel(
           better comparison. Also, you can choose other indices for
           comparison!", style = "font-size:14pt"
       ),
+      
+      #output of charts
       fluidRow(
         column(width = 5, plotlyOutput("scatter")),
         column(width = 7, plotOutput("bar"))),

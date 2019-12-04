@@ -7,6 +7,8 @@ library(plotly)
 # from the selection bar
 
 getscatplot <- function(data_one, data_two, choice) {
+
+  # dataset for homelessness for each state
   twenty_sixteen_homepop <- data_one %>%
     mutate(
       year_num = (as.Date(data_one$Year, format = "%d/%m/%Y")),
@@ -17,7 +19,8 @@ getscatplot <- function(data_one, data_two, choice) {
     summarize(state_hl = sum(Count)) %>%
     filter(State != "GU", State != "PR", State != "VI") %>%
     mutate(homeless_per_100000 = (state_hl) / 100000)
-  
+
+  # dataset for crime rates by each state
   crime_by_state <- data_two %>%
     mutate(state = substr(
       data_two$county_name,
@@ -40,7 +43,7 @@ getscatplot <- function(data_one, data_two, choice) {
       larceny_rate = mean(LARCENY) / 100000,
       mvtheft_rate = mean(MVTHEFT) / 100000
     )
-  # joint the data sets together
+  # join the data sets together
   crime_hl_by_state <- data.frame(
     state = twenty_sixteen_homepop$State,
     homeless_rate = twenty_sixteen_homepop$homeless_per_100000,
@@ -54,6 +57,7 @@ getscatplot <- function(data_one, data_two, choice) {
     mvtheft_rate = crime_by_state$mvtheft_rate
   )
 
+  # create the scatter plot based on what the user chose
   scatplot <- plot_ly(
     data = crime_hl_by_state,
     x = ~homeless_rate,
@@ -61,18 +65,19 @@ getscatplot <- function(data_one, data_two, choice) {
     type = "scatter",
     alpha = .7,
     hoverinfo = "text",
-    text = ~paste("State:", crime_hl_by_state$state, '</br></br>',
-                  "HOMELESS_RATE =", crime_hl_by_state$homeless_rate,
-                  '</br>', toupper(choice), "=", crime_hl_by_state[, choice]),
+    text = ~ paste(
+      "State:", crime_hl_by_state$state, "</br></br>",
+      "HOMELESS_RATE =", crime_hl_by_state$homeless_rate,
+      "</br>", toupper(choice), "=", crime_hl_by_state[, choice]
+    ),
     mode = "markers",
     color = "darkred"
   ) %>%
     layout(
       title = paste("homeless_rate vs", choice),
-      xaxis = list(title = "homeless_rate"), 
+      xaxis = list(title = "homeless_rate"),
       yaxis = list(title = choice)
     )
 
   return(scatplot)
 }
-
