@@ -31,6 +31,8 @@ homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv",
 crime_stats <- read.csv("data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
                         stringsAsFactors = FALSE)
 
+homeless_population_analysis <- population_analysis(states, state_populations, homelessness)
+
 # Define server, and pass input values to visualization functions
 server <- shinyServer(function(input, output) {
   #cost of living
