@@ -55,10 +55,8 @@ server <- shinyServer(function(input, output) {
   })
   
   output$note <- renderText({
-    paste(" Note: You may find that some index(es) is not strongly or not at
-    all correlated to homeless rate. We concluded that CPI(w/ Rent) and CPI are
-    two most relevant indices to Homeless rate. Which means the homeless
-    population is highly realated to the Cost of living in a city.")
+    paste(" Note: You may find that some index(es) is not strongly or not at all correlated to homeless rate. We concluded that CPI(w/ Rent) and CPI are
+    two most relevant indices to Homeless rate. Which means the homeless population is highly realated to the Cost of living in a city.")
   })
   
   #crime
