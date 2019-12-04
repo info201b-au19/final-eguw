@@ -3,13 +3,16 @@ homeless_demographics <- tabPanel(
   "Homeless Demograpics",
   titlePanel("Homeless Population Statistics"),
   
-  shelter_analysis(homeless_population_analysis),
+  leafletOutput("map"),
   
   fluidRow(
     column(
       8,
       offset = 2,
-      h4("Controls Placeholder")
+      selectInput(inputId = "analysis",
+                  label = "Analysis",
+                  choices = c("Shelter","Family"),
+                  selected = "Shelter")
     )
   )
 )
