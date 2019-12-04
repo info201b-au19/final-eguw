@@ -3,15 +3,7 @@ summary <- tabPanel(
   "Summary",
   titlePanel("Summary"),
   
-  # Sidebar layout
-  sidebarLayout(
-    # Controls
-    sidebarPanel(
-      # Controls
-    ),
-    # Visualization
-    mainPanel(
-      # Visualization
-    )
-  )
+  fluidRow(),
+  fluidRow(),
+  fluidRow()
 )
