@@ -1,7 +1,7 @@
 # Define interactive page 3
 CR_HR <- tabPanel(
   "Crime Rate and Homelessness Rate by State",
-  titlePanel("Homelessness vs Crime"),
+  titlePanel(em("Homelessness vs Crime", style = "font-family: 'Trebuchet MS'")),
   
   # Sidebar layout
   sidebarLayout(
