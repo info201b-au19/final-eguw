@@ -28,11 +28,12 @@ state_populations <- read.csv("data/homelessness/Population-by-state.csv",
 homelessness <- read.csv("data/homelessness/2007-2016-Homelessnewss-USA.csv",
   stringsAsFactors = FALSE
 )
-crime_rate <- read.csv("data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
+crime_stats <- read.csv("data/united-states-crime-rates-by-county/crime_data_w_population_and_crime_rate.csv",
                        stringsAsFactors = FALSE)
 
 # Define server, and pass input values to visualization functions
 server <- shinyServer(function(input, output) {
+  #cost of living
   output$scatter <- renderPlotly({
     sc <- get_chart(cpi_2016, homelessness, input$control1, 1)
     if (input$control2) {
@@ -56,6 +57,13 @@ server <- shinyServer(function(input, output) {
     all correlated to homeless rate. We concluded that CPI(w/ Rent) and CPI are
     two most relevant indices to Homeless rate. Which means the homeless
     population is highly realated to the Cost of living in a city.")
+  })
+  
+  #crime
+  #figure out how to choose the text that was selected
+  #not just the value
+  output$crime_scats <- renderPlotly({
+    getscatplot(homelessness, crime_stats, input$selected, )
   })
   
   output$table <- renderTable({
